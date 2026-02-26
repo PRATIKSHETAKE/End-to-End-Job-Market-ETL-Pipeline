@@ -14,11 +14,11 @@ def load_data_to_db():
     cursor = conn.cursor()
 
     table_name = "tech_jobs"
-    # Load data into SQL
+
     df.to_sql(table_name, conn, if_exists='replace', index=False)
     print(f"Data successfully loaded into the '{table_name}' table in {db_name}!")
 
-    # Verify data
+
     cursor.execute(f"SELECT [Job Title], Company, Extracted_Skills FROM {table_name} LIMIT 3")
     rows = cursor.fetchall()
     print("\nDatabase Preview:")
